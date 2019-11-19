@@ -5,12 +5,13 @@ using UnityEngine;
 public class Mole : MonoBehaviour
 {
     // Show and Hide Variables
-
+    public Score changeScore;
     public float VisibleYHeight = 1.3f;
     public float HiddenYHeight = -2.0f;
     private Vector3 myNewXYZPosition; // position to move Mole
     public float speed = 4f;          // speed the moles move
     public float hideMoleTimer = 1.25f;
+    public bool hit = false;
 
     private void Awake()
     {
@@ -66,5 +67,14 @@ public class Mole : MonoBehaviour
 
         // Reset the hideMoleTimer to 1.5 seconds before hiding
         hideMoleTimer = 1.25f;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        //gameManager.Disappear();
+        HideMole();
+        hit = true;
+        //changeScore.moleHit = true;
+        //changeScore.score += 20;
     }
 }
